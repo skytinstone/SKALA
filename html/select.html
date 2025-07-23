@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>목록 선택(select.html)</title>
+  <style>
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    #fruitImage {
+      margin-top: 10px;
+      max-width: 200px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>[ 실습 ] 목록 선택(select.html)</h2>
+  <p>
+    ▪ <code>&lt;select&gt;</code>와 <code>&lt;option&gt;</code> 태그를 이용하여 좋아하는 과일을 목록에서 선택하면 하단에 선택된 항목과 이미지가 보이기
+  </p>
+
+  <label for="fruit">좋아하는 과일을 선택하세요: </label>
+  <select id="fruit" onchange="showSelectedFruit()">
+    <option value="">-- 과일 선택 --</option>
+    <option value="사과">사과</option>
+    <option value="바나나">바나나</option>
+    <option value="딸기">딸기</option>
+    <option value="포도">포도</option>
+  </select>
+
+  <p id="result"></p>
+  <img id="fruitImage" src="" alt="선택한 과일 이미지">
+
+  <script>
+    function showSelectedFruit() {
+      const fruit = document.getElementById("fruit").value;
+      const result = document.getElementById("result");
+      const image = document.getElementById("fruitImage");
+
+      const fruitImages = {
+        "사과": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/320px-Red_Apple.jpg",
+        "바나나": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/320px-Banana-Single.jpg",
+        "딸기": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/PerfectStrawberry.jpg/320px-PerfectStrawberry.jpg",
+        "포도": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Table_grapes_on_white.jpg/320px-Table_grapes_on_white.jpg"
+      };
+
+      if (fruit) {
+        result.textContent = `선택한 과일은 ${fruit}입니다.`;
+        image.src = fruitImages[fruit];
+        image.style.display = 'block';
+        image.alt = `${fruit} 이미지`;
+      } else {
+        result.textContent = "";
+        image.style.display = 'none';
+        image.src = "";
+      }
+    }
+  </script>
+</body>
+</html>

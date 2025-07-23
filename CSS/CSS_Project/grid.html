@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>2x3 Grid 레이아웃</title>
+  <!-- 기본 스타일에 대한 설정! -->
+  <style>
+    .grid-container { /* Grid 컨테이너 스타일 */
+      display: grid; /* Grid 레이아웃 활성화 */
+      grid-template-columns: repeat(3, 100px); /* 3열 */
+      grid-template-rows: repeat(2, 100px);    /* 2행 */
+      gap: 20px; /* 각 셀 간격 */
+      justify-content: center; /* 수평 중앙 정렬 */
+      margin-top: 50px; /* 상단 여백 */
+      background-color: #eee; /* 배경색 */
+      padding: 20px;/* 내부 여백 */
+    }
+
+    .grid-item { /* 각 셀 스타일 */
+      width: 100px; /* 셀 너비 */
+      height: 100px; /* 셀 높이 */
+      background-color: #4dd0e1; /* 하늘색 */
+      display: flex; /* Flexbox로 내용 중앙 정렬 */
+      align-items: center; /* 수직 중앙 정렬 */
+      justify-content: center; /* 수평 중앙 정렬 */
+      font-size: 24px; /* 글자 크기 */
+      font-weight: bold; /* 글자 두께 */
+      color: #000; /* 글자 색상 */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-container"> /* Grid 컨테이너 */
+    <!-- Grid 아이템들 -->
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+  </div>
+
+</body>
+</html>

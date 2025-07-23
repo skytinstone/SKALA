@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>블록 vs 인라인 스타일</title>
+  <style>
+    .box {
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid blue;
+      background-color: #b3e5fc; /* 연한 하늘색 */
+    }
+
+    .inline-box {
+      display: inline-block;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid green;
+      background-color: #a5d6a7; /* 연한 초록색 */
+    }
+
+    .section {
+      border: 2px dashed gray;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>블록 요소 기본 스타일</h2>
+  <div class="section">
+    <div class="box">블록 스타일 div 1</div>
+    <div class="box">블록 스타일 div 2</div>
+  </div>
+
+  <h2>인라인 스타일로 변경한 div</h2>
+  <div class="section">
+    <div class="inline-box">인라인 스타일 div 1</div>
+    <div class="inline-box">인라인 스타일 div 2</div>
+  </div>
+
+</body>
+</html>

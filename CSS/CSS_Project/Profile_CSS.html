@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Steven Shin's Profile</title>
+  <style>
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #fdfdfd;
+      color: #222;
+    }
+
+    .container {
+      display: grid;
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .pet-photo {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    #header-title {
+      grid-area: header;
+      background-color: #1a1a1a;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer {
+      grid-area: footer;
+      background-color: #eee;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    main {
+      grid-area: main;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .highlight {
+      font-weight: bold;
+      margin-top: 10px;
+      background-color: black;
+      color: white;
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+
+    #details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .section {
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    h2 {
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    li {
+      line-height: 1.6;
+    }
+
+    a {
+      color: #ff0000;
+      text-decoration: none;
+    }
+
+    .desc > p {
+      color: green;
+      font-size: 1.1rem;
+    }
+
+    h2 ~ p {
+      color: blue;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header id="header-title">
+      <h1>Shin Minseok</h1>
+      <p>AI Engineer · Embedded System Developer · Electric Vehicle Researcher</p>
+    </header>
+
+    <main>
+      <section style="display: flex; flex-direction: column; align-items: center;">
+  <!-- 이미지 -->
+  <img src="images/MINSEOK.jpeg" alt="Shin Minseok" style="width: 200px; height: auto; margin-bottom: 10px;">
+
+  <!-- 커리어 텍스트 -->
+  <div class="highlight">
+    💼 career : Lotte EVSIS Researcher
+  </div>
+
+        <div class="desc">
+          <p>🎓 Academic Footsteps 🦶🏻</p>
+          <ul>
+            <li>MS. 🐯 Univ. AI</li>
+            <li>BS. 🐯 Univ. EE</li>
+            <li>BS. 🐳 Univ. EE</li>
+          </ul>
+          <p>📍 🇰🇷 Seoul</p>
+        </div>
+
+        <div class="desc">
+          <p>⚽️ Favorite Sports</p>
+          <ul>
+            <li>Badminton 🏸</li>
+            <li>Ice Hockey 🏒 "7 Years Expert Player"</li>
+          </ul>
+        </div>
+
+        <div class="desc">
+          <h2>🐶 My Dog</h2>
+          <div class="image-container">
+            <img src="images/GOMA1.jpeg" alt="Shiba" class="pet-photo">
+            <img src="images/GOMA2.jpeg" alt="Shiba" class="pet-photo">
+          </div>
+        </div>
+      </section>
+
+      <section id="details">
+        <div class="section">
+          <h2>🔬 Research Interest</h2>
+          <ul>
+            <li>LLM (Large Language Model)</li>
+            <li>NLP (Natural Language Processing)</li>
+            <li>RL (Reinforcement Learning)</li>
+            <li>TTS (Text to Speech)</li>
+            <li>SRCNN (Super-Resolution CNN)</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>📚 Experiences</h2>
+          <ul>
+            <li>AI Research Intern @ Korea Univ | ADD "2022–2024"</li>
+            <li>Researcher @ EVSIS / Lotte "2023–2025"</li>
+            <li>H-Mobility Autonomous Driving @ Hyundai Motors "2023–2024"</li>
+            <li>SK AX AI Leader Academy @ SK Ltd "📍In Progress"</li>
+            <li>Apple Developer Academy Foundation @ POSTECH "2025.06–2025.07"</li>
+            <li>Republic of Korea Air Force "2016–2018"</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>🛠 Skills</h2>
+          <p>Python, Java, C/C++</p>
+          <p>TensorFlow, PyTorch</p>
+          <p>Orcad, Pspice, Matplot</p>
+        </div>
+
+        <div class="section">
+          <h2>🪪 Licenses</h2>
+          <ul>
+            <li>HSK (Chinese)</li>
+            <li>ITQ</li>
+            <li>Electricity Engineer & Electrical Construction Engineer (written passed)</li>
+            <li>Health Functional Foods Sales Qualification</li>
+            <li>BMW Track License</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>📧 Contacts</h2>
+          <ul>
+            <li>Email: <a href="mailto:stevenshin16@korea.ac.kr">stevenshin16@korea.ac.kr</a></li>
+            <li>GitHub: <a href="https://github.com/skytinstone" target="_blank">skytinstone</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2025 Shin Minseok. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
