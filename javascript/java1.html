@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script Study</title>
+</head>
+<body>
+    <!-- html 기본 body -->
+    <h1>자바스크립트 학습</h1>
+    <p>점수를 입력하세요:</p>
+    <input type="number" id="scoreInput" placeholder="점수 입력"    oninput="updateScore()">
+    <div id="result"></div>
+
+    <!-- Java Script 영역 -->
+    <script>
+        function checkScore() {
+            const score = parseInt(document.getElementById("scoreInput").value);
+            const result = document.getElementById("result");
+            let message = ""
+
+            console.log("입력된 점수:" + score);
+
+           
+
+            // 점수에 따른 결과 출력
+            if (score >= 90) {
+                result.innerHTML = "<p>당신의 점수는 A입니다. \n SKALA 1분반입니다.</p>";
+            } else if (score >= 80) {
+                result.innerHTML = "<p>당신의 점수는 B입니다. \n SKALA 2분반입니다.</p>";
+            } else if (score >= 70) {
+                result.innerHTML = "<p>당신의 점수는 C입니다. \n SKALA 3분반입니다.</p>";
+            } else {
+                result.innerHTML = "<p>당신의 점수는 D입니다. \n SKALA 4분반입니다.</p>";
+            }
+            
+            console.log(message);
+            //결과를 HTML 화면에 출력
+            resultDiv.innerHTML = `
+        <p>입력된 점수: ${score}</p>
+        <p>${message}</p>
+        }
+
+    </script>
+    
+</body>
+</html>

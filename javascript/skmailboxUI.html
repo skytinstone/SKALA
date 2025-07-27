@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SK Careers - 메일함</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f9f9f9;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e5e5e5;
+      background-color: #fff;
+    }
+    .logo img {
+      width: 130px;
+    }
+    .nav {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1rem;
+      color: #555;
+    }
+    .container {
+      padding: 2rem;
+      position: relative;
+    }
+    .mailbox {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    }
+    h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+    .button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #f00;
+      color: white;
+      font-weight: bold;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 998;
+    }
+    .popup h3 {
+      margin-top: 0;
+      text-align: center;
+    }
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    /* 오른쪽 하단 로고 */
+    .bottom-logo {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 120px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <img src="images/skcareers.jpg" alt="SK Careers 로고">
+    </div>
+    <nav class="nav">
+      <div>Jobs</div>
+      <div>Areas of Work</div>
+      <div>Culture</div>
+      <div>신민석 ▼</div>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <h2>메일함</h2>
+    <div class="mailbox">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>메일 제목</th>
+            <th>메일 발송일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="openPopup()">
+            <td>8</td>
+            <td>[SK AX] 2026 신입구성원 채용 2차 면접전형(최종) 결과 안내</td>
+            <td>2026.03.21 18:31</td>
+          </tr>
+          <tr onclick="openPopup()">
+            <td>7</td>
+            <td>[SK AX] 2026 신입 구성원 채용 1차 면접전형 결과 및 2차 면접전형 일정 안내</td>
+            <td>2026.03.14 18:31</td>
+          </tr>
+          <tr onclick="openPopup()">
+            <td>6</td>
+            <td>[SK AX] 2026 신입 구성원 채용 1차 면접전형 일정 안내</td>
+            <td>2026.03.06 18:31</td>
+          </tr>
+          <tr onclick="openPopup()">
+            <td>5</td>
+            <td>[SK AX] 2026 신입 구성원 채용 필기전형(SKCT)및 AICT 결과 안내</td>
+            <td>2026.03.04 20:33</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popup">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h3>2026 신입사원 2차 면접전형(최종) 결과 안내</h3>
+    <p style="text-align:center;">SK AX 신입사원 채용</p>
+    <p>안녕하세요. SK주식회사 AX 채용담당자입니다.</p>
+    <p>SK 주식회사 AX에 관심을 가지고 지원해주시고,<br>
+       그동안 진행된 모든 전형 과정에서 최선을 다해 임해주셔서 진심으로 감사드립니다.</p>
+    <p>전형 과정동안 뛰어난 역량과 넘치는 패기를 보여주신 지원자님께<br>
+       <strong style="color:green;">기쁜 마음으로 최종 합격 소식을 전합니다.</strong></p>
+    <p>사전 설문조사가 메일로 발송될 예정이니 4/21(목) 오전 11:00까지 완료 부탁드립니다.</p>
+    <p>입사 준비에 대한 자세한 안내는 별도 메일로 전달드리겠습니다.</p>
+    <p>다시 한 번 SK주식회사 AX의 신입사원이 되신 것을 축하드리며,<br>
+       함께 만들어갈 미래를 기대하겠습니다.</p>
+    <p>감사합니다.<br>SK AX 채용담당자 드림</p>
+    <button class="button" onclick="closePopup()">홈페이지로 이동</button>
+  </div>
+
+  <!-- 오른쪽 하단 로고 이미지 -->
+  <img src="images/SKLOGO.jpeg" alt="SK 하단 로고" class="bottom-logo">
+
+  <script>
+    function openPopup() {
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
