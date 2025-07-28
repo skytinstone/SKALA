@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>민석이의 식량분배(array)/title>
+</head>
+<body>
+    <h1>[실습] 민석이의 식량분배</h1>
+    <h2>array 활용하여 문제 해결!</h2>
+    <p> 식량(foods) 항목을 가난한 사람들(poors)에게 순서대로 하나씩 분배(공평하게 반복 순환)</p>
+    <p> 각 사람마다 받은 물건을 객체 형태(name, items)의 results 배열로 생성</p>
+    <p> 결과를 보기 좋게 console.table()</p>
+
+    <script>
+        
+        // 식량 목록 list
+        const foods = [
+        "쌀", "보리", "콩", "감자", "양파",
+        "마늘", "배추", "무", "고구마", "호박"
+        ];
+
+        // 나눠줄 사람들의 이름
+         const poors = ["철수", "영희", "민수"];
+
+        // 각 사람에게 빈 items 배열을 가진 객체 생성
+        const results = poors.map(name => ({
+        name,
+        items: []   
+        }));
+
+        // 순서대로 음식을 분배
+        foods.forEach((food, index) => {
+        const personIndex = index % poors.length;
+        results[personIndex].items.push(food);
+        });
+
+        // 표 형태로 결과 출력
+        console.table(results);
+
+    </script>
+    
+</body>
+</html>

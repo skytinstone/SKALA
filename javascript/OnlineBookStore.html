@@ -1,0 +1,284 @@
+<!-- 0728 html Javascript 실습과제 -->
+<!-- 온라인 서점을 운영하는 Steve는 다음과 같은 도서 재고 목록을 가지고 있다.(하기 객체 코드 참조)
+  1. for 반복문을 사용하여 모든 도서 제목을 출력하는 스크립트를 반영해 보세요.
+  2. for...of를 사용하여 재고가 1권 이상인 도서만 출력하는 스크립트를 반영해 보세요.
+  3. forEach + 조건문을 사용하여 "프로그래밍" 카테고리만 출력하는 스크립트를 반영해 보세요.
+  4. for...of를 사용하여 도서 전체 가겪의 평균을 구하는 스크립트를 반영해 보세요.
+  5. 재고가 0인 책의 재고를 10권 추가하는 스크립트를 반영해 보세요. -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minseok's Library</title>
+  <style>
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
+      background-color: #f2f4f8;
+      margin: 0;
+      padding: 0;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/0/05/Widener_Library_-_Harvard_University_-_DSC09938.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: rgba(255,255,255,0.9); /* 반투명 배경 */
+      border-radius: 21px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    form {
+      background-color: #ffffff;
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+
+    .table-container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
+
+    thead {
+      background-color: #007aff;
+      color: white;
+    }
+
+    th, td {
+      padding: 14px 18px;
+      text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f7f9fb;
+    }
+
+    tbody tr:hover {
+      background-color: #eef3f8;
+    }
+
+    .book-card {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: left;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    }
+
+    .book-card img {
+      float: left;
+      margin-right: 20px;
+      width: 120px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .book-card::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    #refreshBtn {
+      display: none;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      input {
+        width: 100%;
+      }
+      .book-card {
+        text-align: center;
+      }
+      .book-card img {
+        float: none;
+        margin: 0 auto 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📘 Minseok's Library</h1>
+
+    <form id="isbnForm">
+      <input type="text" id="isbnInput" placeholder="ISBN 번호를 입력하세요" />
+      <br />
+      <button type="submit">도서 등록</button>
+    </form>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>제목</th>
+            <th>카테고리</th>
+            <th>가격</th>
+            <th>재고</th>
+          </tr>
+        </thead>
+        <tbody id="bookTableBody">
+          <!-- JavaScript로 데이터 삽입 -->
+        </tbody>
+      </table>
+    </div>
+
+    <div id="bookDisplayArea"></div>
+    <button id="refreshBtn" onclick="location.reload()">🔄 새로고침</button>
+  </div>
+
+  <script>
+    const books = [
+      { title: "JavaScript Entery", category: "Programming", price: 25000, stock: 3 },
+      { title: "HTML5 & CSS3", category: "Web Design", price: 20000, stock: 0 },
+      { title: "Fundamental of Python", category: "Programming", price: 27000, stock: 5 },
+      { title: "Complete Conquering React", category: "Programming", price: 30000, stock: 1 },
+      { title: "UX/UI Management", category: "Design", price: 22000, stock: 2 },
+      { title: "Data Analysis", category: "Programming", price: 32000, stock: 0 }
+    ];
+
+    const tableBody = document.getElementById('bookTableBody');
+
+    books.forEach(book => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.category}</td>
+        <td>${book.price.toLocaleString()}원</td>
+        <td>${book.stock}권</td>
+      `;
+      tableBody.appendChild(row);
+    });
+
+    document.getElementById('isbnForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const isbn = document.getElementById('isbnInput').value.trim();
+
+      if (!isbn) {
+        alert("ISBN을 입력해주세요!");
+        return;
+      }
+
+      const outOfStock = books.some(book => book.stock === 0);
+      if (!outOfStock) {
+        alert("모든 도서가 재고를 보유하고 있어 ISBN 등록이 필요하지 않습니다.");
+        return;
+      }
+
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.totalItems === 0) {
+            alert("해당 ISBN의 책을 찾을 수 없습니다.");
+            return;
+          }
+
+          const info = data.items[0].volumeInfo;
+          const newBook = {
+            title: info.title || "제목 없음",
+            category: info.categories ? info.categories[0] : "기타",
+            price: Math.floor(Math.random() * 20000) + 15000,
+            stock: 0,
+            image: info.imageLinks ? info.imageLinks.thumbnail : '',
+            description: info.description || '줄거리 정보 없음.'
+          };
+
+          const stockInput = prompt(`${newBook.title}의 재고 수량을 입력하세요 (숫자만):`);
+          const stockNumber = parseInt(stockInput);
+
+          if (isNaN(stockNumber) || stockNumber < 0) {
+            alert("유효한 숫자를 입력해주세요!");
+            return;
+          }
+
+          newBook.stock = stockNumber;
+          books.push(newBook);
+          displayBook(newBook);
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${newBook.title}</td>
+            <td>${newBook.category}</td>
+            <td>${newBook.price.toLocaleString()}원</td>
+            <td>${newBook.stock}권</td>
+          `;
+          tableBody.appendChild(row);
+
+          alert("✅ 도서 등록이 완료되었습니다!");
+          document.getElementById('isbnForm').reset();
+          document.getElementById('refreshBtn').style.display = 'inline-block';
+        })
+        .catch(error => {
+          console.error("API 오류:", error);
+          alert("도서 정보를 불러오는 데 실패했습니다.");
+        });
+    });
+
+    function displayBook(book) {
+      const container = document.getElementById('bookDisplayArea');
+      const div = document.createElement('div');
+      div.className = 'book-card';
+
+      div.innerHTML = `
+        <img src="${book.image || 'https://via.placeholder.com/120x160'}" alt="책 이미지">
+        <h3>${book.title}</h3>
+        <p>📚 카테고리: ${book.category}</p>
+        <p>💰 가격: ${book.price.toLocaleString()}원</p>
+        <p>📦 재고: ${book.stock}권</p>
+        <p>📝 줄거리: ${book.description}</p>
+      `;
+      container.appendChild(div);
+    }
+  </script>
+</body>
+</html>
