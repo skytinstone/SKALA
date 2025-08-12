@@ -1,0 +1,18 @@
+2025-08-12 17:08:20 | INFO | 앱 실행 시작
+2025-08-12 17:08:20 | DEBUG | 환경 변수 로딩 완료 (LOG_LEVEL=DEBUG, APP_NAME=MyCoolApp)
+2025-08-12 17:08:20 | ERROR | 예외 발생 예시(의도적 ZeroDivisionError)
+Traceback (most recent call last):
+  File "/Users/minseok/workspace/basic/MLOps_Python/env_logging_test/main.py", line 90, in <module>
+    _ = 1 / 0
+        ~~^~~
+ZeroDivisionError: division by zero
+2025-08-12 17:08:20 | INFO | 앱 실행 종료
+2025-08-12 17:17:26 | INFO | 앱 실행 시작
+2025-08-12 17:17:26 | DEBUG | 환경 변수 로딩 완료 (LOG_LEVEL=DEBUG, APP_NAME=MyCoolApp)
+2025-08-12 17:17:26 | ERROR | 예외 발생 예시(의도적 ZeroDivisionError)
+Traceback (most recent call last):
+  File "/Users/minseok/workspace/basic/MLOps_Python/env_logging_test/main.py", line 90, in <module>
+    _ = 1 / 0
+        ~~^~~
+ZeroDivisionError: division by zero
+2025-08-12 17:17:26 | INFO | 앱 실행 종료
